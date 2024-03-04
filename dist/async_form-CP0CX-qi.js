@@ -72,8 +72,8 @@ class o {
 }
 o.refs = {}, window.AsyncForm = o, document.addEventListener("DOMContentLoaded", () => {
   Array.from(document.querySelectorAll("[c-async-form]")).forEach((a) => new o(a));
-}), document.querySelector("[c-fileupload]") && import("./fileupload-Dmn3eGfB.js");
+});
 export {
   o as A
 };
-//# sourceMappingURL=main-BGKplZMr.js.map
+//# sourceMappingURL=async_form-CP0CX-qi.js.map

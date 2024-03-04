@@ -6,9 +6,9 @@ export default defineConfig({
 	build: {
 		sourcemap: true,
 		lib: {
-			entry: resolve(__dirname, "src/main.js"),
+			entry: [resolve(__dirname, "src/main.js"), resolve(__dirname, "src/index.js")],
 			formats: ["es"],
-			fileName: "chapeau",
+			fileName: (_, entry) => `${entry}.js`,
 		},
 		rollupOptions: {
 			plugins: [minify()], // Vite doesn't minify when using "es"-format

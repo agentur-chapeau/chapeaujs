@@ -1,0 +1,1 @@
+{"version":3,"file":"main.js","sources":["../src/main.js"],"sourcesContent":["import \"./async_form.js\";\n\nif (document.querySelector(\"[c-fileupload]\")) {\n\timport(\"./fileupload.js\");\n}\n"],"names":[],"mappings":";AAEI,SAAS,cAAc,gBAAgB,KAC1C,OAAO,0BAAiB;"}
