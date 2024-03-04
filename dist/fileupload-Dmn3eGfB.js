@@ -1,4 +1,4 @@
-import { AsyncForm as uo } from "./chapeau.js";
+import { A as uo } from "./main-BGKplZMr.js";
 /*!
 * FilePond 4.30.6
 * Licensed under MIT, https://opensource.org/licenses/MIT/
@@ -2310,4 +2310,4 @@ const Da = { labelIdle: 'Dateien hierher ziehen oder <span class="filepond--labe
 export {
   Se as FileUpload
 };
-//# sourceMappingURL=fileupload-aI18G9en.js.map
+//# sourceMappingURL=fileupload-Dmn3eGfB.js.map
