@@ -3,7 +3,11 @@
 	"private": true,
 	"version": "0.0.0",
 	"type": "module",
-	"main": "./src/main.js",
+	"main": "./dist/chapeau.js",
+	"exports": {
+		".": "./dist/chapeau.js",
+		"./fileupload": "./dist/fileupload.js"
+	},
 	"scripts": {
 		"dev": "vite",
 		"build": "vite build",

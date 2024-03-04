@@ -6,12 +6,18 @@ export default defineConfig({
 	build: {
 		sourcemap: true,
 		lib: {
-			entry: resolve(__dirname, "src/main.js"),
+			entry: {
+				chapeau: resolve(__dirname, "src/main.js"),
+				fileupload: resolve(__dirname, "src/fileupload/fileupload.js"),
+			},
 			formats: ["es"],
-			fileName: "chapeau",
+			fileName: (_, entry) => `${entry}.js`,
 		},
 		rollupOptions: {
-			plugins: [minify()], // Vite doesn't minify when using "es"-format
+			// plugins: [minify()], // Vite doesn't minify when using "es"-format
+			// output: {
+			// 	chunkFileNames: "[name].js",
+			// },
 		},
 	},
 	server: {
