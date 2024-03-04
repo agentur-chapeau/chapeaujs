@@ -225,6 +225,8 @@ export class AsyncForm {
 
 AsyncForm.refs = {};
 
+window.AsyncForm = AsyncForm;
+
 document.addEventListener("DOMContentLoaded", () => {
 	Array.from(document.querySelectorAll("[c-async-form]")).forEach((el) => new AsyncForm(el));
 });

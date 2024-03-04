@@ -2,9 +2,9 @@ import * as FilePond from "filepond";
 import FilePondPluginFileValidateSize from "filepond-plugin-file-validate-size";
 import FilePondPluginFileValidateType from "filepond-plugin-file-validate-type";
 import "filepond/dist/filepond.min.css";
-import "../../styles/fileupload.css";
+import "../styles/fileupload.css";
 
-import { AsyncForm } from "../async_form.js";
+import { AsyncForm } from "./async_form.js";
 
 export class FileUpload {
 	constructor(el) {
@@ -120,6 +120,8 @@ export class FileUpload {
 }
 
 FileUpload.refs = {};
+
+window.FileUpload = FileUpload;
 
 document.addEventListener("DOMContentLoaded", () => {
 	Array.from(document.querySelectorAll("[c-file-upload]")).forEach((el) => new FileUpload(el));

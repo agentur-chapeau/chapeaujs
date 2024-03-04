@@ -1,7 +1,7 @@
 import { AsyncForm } from "./async_form.js";
-import "./fileupload";
-// import { FileUpload } from "./fileupload/fileupload.js";
 
-// window.AsyncForm = AsyncForm;
-// window.FileUpload = FileUpload;
+if (document.querySelector("[c-fileupload]")) {
+	import("./fileupload.js");
+}
+
 export { AsyncForm };

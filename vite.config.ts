@@ -8,7 +8,7 @@ export default defineConfig({
 		lib: {
 			entry: {
 				chapeau: resolve(__dirname, "src/main.js"),
-				fileupload: resolve(__dirname, "src/fileupload/fileupload.js"),
+				// fileupload: resolve(__dirname, "src/fileupload/fileupload.js"),
 			},
 			formats: ["es"],
 			fileName: (_, entry) => `${entry}.js`,
