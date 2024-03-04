@@ -8,6 +8,7 @@ export default defineConfig({
 		lib: {
 			entry: resolve(__dirname, "src/main.js"),
 			formats: ["es"],
+			fileName: "chapeau",
 		},
 		rollupOptions: {
 			plugins: [minify()], // Vite doesn't minify when using "es"-format
