@@ -1,0 +1,1 @@
+{"version":3,"file":"chapeau.js","sources":["../src/main.js"],"sourcesContent":["import \"./async_form.js\";\n\nif (document.querySelector(\"[c-file-upload]\")) {\n\timport(\"./fileupload.js\");\n}\n"],"names":[],"mappings":";AAEI,SAAS,cAAc,iBAAiB,KAC3C,OAAO,0BAAiB;"}

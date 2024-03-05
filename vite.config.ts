@@ -6,7 +6,10 @@ export default defineConfig({
 	build: {
 		sourcemap: true,
 		lib: {
-			entry: [resolve(__dirname, "src/main.js"), resolve(__dirname, "src/index.js")],
+			entry: {
+				chapeau: resolve(__dirname, "src/main.js"),
+				index: resolve(__dirname, "src/index.js"),
+			},
 			formats: ["es"],
 		},
 		rollupOptions: {
