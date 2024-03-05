@@ -1,3 +1,3 @@
-import "./async_form-CP0CX-qi.js";
-document.querySelector("[c-fileupload]") && import("./fileupload-DQq2JRRI.js");
+import "./async_form-BRyPFelS.js";
+document.querySelector("[c-file-upload]") && import("./fileupload-CQUAmHAa.js");
 //# sourceMappingURL=main.js.map

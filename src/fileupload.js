@@ -5,6 +5,7 @@ import "filepond/dist/filepond.min.css";
 import "../styles/fileupload.css";
 
 import { AsyncForm } from "./async_form.js";
+import { onReady } from "./on_ready.js";
 
 export class FileUpload {
 	constructor(el) {
@@ -123,7 +124,7 @@ FileUpload.refs = {};
 
 window.FileUpload = FileUpload;
 
-document.addEventListener("DOMContentLoaded", () => {
+onReady(() => {
 	Array.from(document.querySelectorAll("[c-file-upload]")).forEach((el) => new FileUpload(el));
 });
 

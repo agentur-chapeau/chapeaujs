@@ -1,8 +1,11 @@
-class o {
+function l(a) {
+  document.readyState === "loading" ? document.addEventListener("DOMContentLoaded", a) : a();
+}
+class r {
   constructor(t) {
     if (t.dataset.refAsyncForm)
-      return o.refs[t.dataset.refAsyncForm];
-    this.ref = Math.random(), o.refs[this.ref] = this, t.dataset.refAsyncForm = this.ref, this.el = t, this.form = t.querySelector("form"), this.formSuccess = t.querySelector(".w-form-done"), this.formFail = t.querySelector(".w-form-fail"), this.submitButton = t.querySelector('[type="submit"]'), this.buttonText = this.getSubmitText(), this.waitingText = this.submitButton.dataset.wait, this.beforeSubmitHandlers = [], this.payloadHandlers = [], this.inputHandlers = [], this.onStateHandlers = [], this.el.addEventListener("submit", (e) => this.submit(e));
+      return r.refs[t.dataset.refAsyncForm];
+    this.ref = Math.random(), r.refs[this.ref] = this, t.dataset.refAsyncForm = this.ref, this.el = t, this.form = t.querySelector("form"), this.formSuccess = t.querySelector(".w-form-done"), this.formFail = t.querySelector(".w-form-fail"), this.submitButton = t.querySelector('[type="submit"]'), this.buttonText = this.getSubmitText(), this.waitingText = this.submitButton.dataset.wait, this.beforeSubmitHandlers = [], this.payloadHandlers = [], this.inputHandlers = [], this.onStateHandlers = [], this.el.addEventListener("submit", (e) => this.submit(e));
   }
   set onBeforeSubmit(t) {
     this.beforeSubmitHandlers.push(t);
@@ -19,7 +22,7 @@ class o {
   async submit(t) {
     t.preventDefault();
     try {
-      if (!this.beforeSubmitHandlers.reduce((r, n) => n() && r, !0))
+      if (!this.beforeSubmitHandlers.reduce((o, n) => n() && o, !0))
         return;
       this.setState("loading");
       const e = await this.createPayload(), s = this.form.action, i = { method: this.form.method, headers: { "Content-Type": "application/json" }, body: JSON.stringify(e) };
@@ -33,15 +36,15 @@ class o {
     const e = this.elements.filter((s) => s.name !== "");
     for (const s of e) {
       const i = s.name;
-      let r = s.value;
+      let o = s.value;
       for (const n of this.inputHandlers)
-        r = await n(s, r);
-      if (r !== null && (s.type === "checkbox" && (r = s.checked), !(s.type === "radio" && !s.checked))) {
+        o = await n(s, o);
+      if (o !== null && (s.type === "checkbox" && (o = s.checked), !(s.type === "radio" && !s.checked))) {
         if (typeof t[i] < "u") {
-          Array.isArray(t[i]) || (t[i] = [t[i]]), t[i].push(r);
+          Array.isArray(t[i]) || (t[i] = [t[i]]), t[i].push(o);
           continue;
         }
-        t[i] = r;
+        t[i] = o;
       }
     }
     return t;
@@ -70,10 +73,11 @@ class o {
     return Array.from(this.form.elements);
   }
 }
-o.refs = {}, window.AsyncForm = o, document.addEventListener("DOMContentLoaded", () => {
-  Array.from(document.querySelectorAll("[c-async-form]")).forEach((a) => new o(a));
+r.refs = {}, window.AsyncForm = r, l(() => {
+  Array.from(document.querySelectorAll("[c-async-form]")).forEach((a) => new r(a));
 });
 export {
-  o as A
+  r as A,
+  l as o
 };
-//# sourceMappingURL=async_form-CP0CX-qi.js.map
+//# sourceMappingURL=async_form-BRyPFelS.js.map

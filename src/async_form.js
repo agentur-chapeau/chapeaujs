@@ -1,3 +1,5 @@
+import { onReady } from "./on_ready.js";
+
 export class AsyncForm {
 	constructor(el) {
 		if (el.dataset.refAsyncForm) {
@@ -227,6 +229,6 @@ AsyncForm.refs = {};
 
 window.AsyncForm = AsyncForm;
 
-document.addEventListener("DOMContentLoaded", () => {
+onReady(() => {
 	Array.from(document.querySelectorAll("[c-async-form]")).forEach((el) => new AsyncForm(el));
 });

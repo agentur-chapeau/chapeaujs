@@ -8,7 +8,6 @@ export default defineConfig({
 		lib: {
 			entry: [resolve(__dirname, "src/main.js"), resolve(__dirname, "src/index.js")],
 			formats: ["es"],
-			fileName: (_, entry) => `${entry}.js`,
 		},
 		rollupOptions: {
 			plugins: [minify()], // Vite doesn't minify when using "es"-format
