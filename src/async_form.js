@@ -141,19 +141,19 @@ export class AsyncForm {
       const name = input.name;
       let value = input.value;
 
-      for (const inputHandler of this.inputHandlers) {
-        value = await inputHandler(input, value);
-      }
-
-      if (value === null) {
-        continue;
-      }
-
       if (input.type === "checkbox") {
         value = input.checked;
       }
 
       if (input.type === "radio" && !input.checked) {
+        value = null;
+      }
+
+      for (const inputHandler of this.inputHandlers) {
+        value = await inputHandler(input, value);
+      }
+
+      if (value === null) {
         continue;
       }
 
