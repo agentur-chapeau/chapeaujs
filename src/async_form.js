@@ -157,17 +157,15 @@ export class AsyncForm {
         continue;
       }
 
-      const nestedUnder = input.dataset.nestedUnder;
-      if (typeof payload[name] !== "undefined") {
-        if (!Array.isArray(payload[name])) {
-          payload[name] = [payload[name]];
-        }
+      const group = input.dataset.group;
+      const path = [group, name].filter((item) => item); // Remove group if undefined
 
-        payload[name].push(value);
-        continue;
+      const existingValue = _.get(payload, path);
+      if (typeof existingValue !== "undefined") {
+        value = [existingValue, value].flat();
       }
 
-      payload[name] = value;
+      _.set(payload, path, value);
     }
 
     return payload;
