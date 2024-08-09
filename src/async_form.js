@@ -41,7 +41,7 @@ export class AsyncForm {
   /**
    * Gets called before the form starts to submit
    * Allows to cancel the submit by returning false
-   * @type {BeforeSubmitHandler}
+   * @param {BeforeSubmitHandler} fn
    */
   set onBeforeSubmit(fn) {
     this.beforeSubmitHandlers.push(fn);
@@ -57,7 +57,7 @@ export class AsyncForm {
    * Allows for adding custom value to the payload
    * Gets called before form elements are converted
    * All handlers will be called in the order they were registered
-   * @type {PayloadHandler}
+   * @param {PayloadHandler} fn
    */
   set onPayload(fn) {
     this.payloadHandlers.push(fn);
@@ -74,7 +74,7 @@ export class AsyncForm {
    * Allows for transforming the values of the form elements
    * All handlers will be called in the order they were registered
    * Can be async
-   * @type {InputHandler}
+   * @param {InputHandler} fn
    */
   set onInput(fn) {
     this.inputHandlers.push(fn);
@@ -87,7 +87,7 @@ export class AsyncForm {
 
   /**
    * Gets called when the forms state changes
-   * @type {StateHandler}
+   * @param {StateHandler} fn
    */
   set onState(fn) {
     this.onStateHandlers.push(fn);
