@@ -67,7 +67,7 @@ export class AsyncForm {
    * @callback InputHandler
    * @param {HTMLElement} input The input element
    * @param {String} value The current value
-   * @returns {String} The new value
+   * @returns {String | Promise<String>} The new value
    */
 
   /**
