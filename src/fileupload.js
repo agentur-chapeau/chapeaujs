@@ -1,7 +1,3 @@
-import * as FilePond from "filepond";
-import FilePondPluginFileValidateSize from "filepond-plugin-file-validate-size";
-import FilePondPluginFileValidateType from "filepond-plugin-file-validate-type";
-import "filepond/dist/filepond.min.css";
 import "../styles/fileupload.css";
 
 import { AsyncForm } from "./async_form.js";
@@ -30,6 +26,10 @@ export class FileUpload {
     asyncForm.onPayload = (payload) => this.onPayload(payload);
     asyncForm.onInput = async (input, value) =>
       await this.inputHandler(input, value);
+
+    import("./filepond.js").then((module) => {
+      Object.assign(globalThis, module);
+    });
   }
 
   onload() {
