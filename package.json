@@ -2,17 +2,21 @@
   "name": "chapeaujs",
   "private": true,
   "version": "1.0.1",
-  "type": "module",
-  "main": "./dist/index.js",
+  "source": "src/index.js",
+  "module": "dist/chapeau.esm.js",
+  "chapeau": "dist/chapeau.js",
+  "browserslist": "> 0.5%, last 2 versions, not dead",
   "scripts": {
     "dev": "vite",
     "build": "node build.js",
+    "parcel": "rm -rf dist/ && parcel build",
     "preview": "vite preview",
     "version": "npm run build && git add -A dist",
     "postversion": "git push && git push --tags"
   },
   "devDependencies": {
     "@types/node": "^20.11.24",
+    "parcel": "^2.12.0",
     "rollup-plugin-esbuild": "^6.1.1",
     "rollup-plugin-iife": "^0.7.1",
     "terser": "^5.33.0",
@@ -23,5 +27,11 @@
     "filepond-plugin-file-validate-size": "^2.2.8",
     "filepond-plugin-file-validate-type": "^1.2.9",
     "lodash-es": "^4.17.21"
+  },
+  "targets": {
+    "chapeau": {
+      "context": "browser",
+      "outputFormat": "global"
+    }
   }
 }
