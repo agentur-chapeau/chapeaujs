@@ -7,20 +7,14 @@
   "chapeau": "dist/chapeau.js",
   "browserslist": "> 0.5%, last 2 versions, not dead",
   "scripts": {
-    "dev": "vite",
-    "build": "node build.js",
-    "parcel": "rm -rf dist/ && parcel build",
-    "preview": "vite preview",
+    "dev": "parcel --dist-dir .dev-dist/",
+    "build": "rm -rf dist/ && parcel build",
     "version": "npm run build && git add -A dist",
     "postversion": "git push && git push --tags"
   },
   "devDependencies": {
     "@types/node": "^20.11.24",
-    "parcel": "^2.12.0",
-    "rollup-plugin-esbuild": "^6.1.1",
-    "rollup-plugin-iife": "^0.7.1",
-    "terser": "^5.33.0",
-    "vite": "^5.1.4"
+    "parcel": "^2.12.0"
   },
   "dependencies": {
     "filepond": "^4.30.6",
