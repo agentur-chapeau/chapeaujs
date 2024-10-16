@@ -1,7 +1,10 @@
 import * as FilePond from "filepond";
 import FilePondPluginFileValidateSize from "filepond-plugin-file-validate-size";
 import FilePondPluginFileValidateType from "filepond-plugin-file-validate-type";
-import "filepond/dist/filepond.min.css";
+import styleInject from "style-inject";
+
+import css from "filepond/dist/filepond.css?inline";
+styleInject(css, { insertAt: "top" });
 
 export {
   FilePond,
