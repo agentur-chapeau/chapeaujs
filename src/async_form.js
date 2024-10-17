@@ -138,7 +138,7 @@ export class AsyncForm {
 
     const inputElements = this.elements.filter((el) => el.name !== "");
     for (const input of inputElements) {
-      const name = input.name;
+      let name = input.name;
       let value = input.value;
 
       if (input.type === "checkbox") {
@@ -149,6 +149,17 @@ export class AsyncForm {
         value = null;
       }
 
+      const checkboxGroup = input.dataset.checkboxGroup;
+      if (checkboxGroup !== undefined) {
+        name = checkboxGroup;
+
+        if (!input.checked) {
+          value = null;
+        } else {
+          value = [input.name];
+        }
+      }
+
       for (const inputHandler of this.inputHandlers) {
         value = await inputHandler(input, value);
       }
@@ -157,9 +168,13 @@ export class AsyncForm {
         continue;
       }
 
+      let pathElements = [name];
       const group = input.dataset.group;
-      const path = [group, name].filter((item) => item); // Remove group if undefined
+      if (group) {
+        pathElements.unshift(group);
+      }
 
+      const path = pathElements.join(".");
       const existingValue = _.get(payload, path);
       if (typeof existingValue !== "undefined") {
         value = [existingValue, value].flat();
