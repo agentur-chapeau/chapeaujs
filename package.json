@@ -17,6 +17,7 @@
   "devDependencies": {
     "@parcel/optimizer-data-url": "^2.12.0",
     "@parcel/transformer-inline-string": "^2.12.0",
+    "@types/lodash-es": "^4.17.12",
     "@types/node": "^20.11.24",
     "parcel": "^2.12.0",
     "vite": "^5.4.6"
