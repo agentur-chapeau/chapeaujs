@@ -1,4 +1,4 @@
-import { onReady } from "./on_ready.js";
+import { onReady } from "../../utils/on_ready.js";
 import * as _ from "lodash-es";
 
 export class AsyncForm {

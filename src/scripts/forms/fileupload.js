@@ -1,9 +1,9 @@
 import styleInject from "style-inject";
 import { AsyncForm } from "./async_form.js";
-import { onReady } from "./on_ready.js";
+import { onReady } from "../../utils/on_ready.js";
 
 // import "../styles/fileupload.css";
-import css from "../styles/fileupload.css?inline";
+import css from "../../../styles/fileupload.css?raw";
 styleInject(css, { insertAt: "top" });
 
 // import("filepond/dist/filepond.min.css");
