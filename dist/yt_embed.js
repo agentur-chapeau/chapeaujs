@@ -1,3 +1,4 @@
+import { e as exportChapeau } from "./export_chapeau-CsPk7c8y.js";
 (function() {
   const videoHTML = `
             <iframe class="c-video__iframe" style="display: none" frameborder="0" allow="fullscreen"></iframe>
@@ -77,9 +78,8 @@
   if (accept == "true") {
     loadVideos();
   }
-  window.Chapeau = {
-    ...window.Chapeau || {},
+  exportChapeau({
     loadVideos
-  };
+  });
 })();
 //# sourceMappingURL=yt_embed.js.map

@@ -1,3 +1,4 @@
+import { e as exportChapeau } from "./export_chapeau-CsPk7c8y.js";
 function onReady(callback) {
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", callback);
@@ -669,7 +670,7 @@ class FileUpload {
     asyncForm.onBeforeSubmit = () => this.beforeSubmit();
     asyncForm.onPayload = (payload) => this.onPayload(payload);
     asyncForm.onInput = async (input, value) => await this.inputHandler(input, value);
-    import("./filepond-B4JsRGV-.js").then(exportGlobal);
+    import("./filepond-B0K1-56P.js").then(exportGlobal);
   }
   onload() {
     FilePond.registerPlugin(FilePondPluginFileValidateType);
@@ -1095,14 +1096,13 @@ function useConversion({ view, controller }) {
     view.next.dataset.trackDisabled = inputsNotValid || currentSlideNotQualified;
   }
 }
-const Chapeau = {
+const Chapeau = exportChapeau({
   AsyncForm,
   FileUpload,
   getConversionIDs
-};
-window.Chapeau = Chapeau;
+});
 export {
   Chapeau as C,
   injectCss as i
 };
-//# sourceMappingURL=index-DYoEyGmu.js.map
+//# sourceMappingURL=index-CWcLrCW9.js.map

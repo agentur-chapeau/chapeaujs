@@ -1,3 +1,5 @@
+import { exportChapeau } from "../utils/export_chapeau";
+
 (function () {
   const videoHTML = `
             <iframe class="c-video__iframe" style="display: none" frameborder="0" allow="fullscreen"></iframe>
@@ -84,8 +86,7 @@
   }
 
   // Exports
-  window.Chapeau = {
-    ...(window.Chapeau || {}),
+  exportChapeau({
     loadVideos,
-  };
+  });
 })();
