@@ -1,4 +1,4 @@
-import { C } from "./index-DvozilLF.js";
+import { C } from "./index-DYoEyGmu.js";
 export {
   C as default
 };

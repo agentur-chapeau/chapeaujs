@@ -1,6 +1,7 @@
 import { AsyncForm } from "./async_form.js";
 import { FileUpload } from "./fileupload.js";
 import injectCss from "../../utils/inject_css.js";
+import { exportGlobal } from "../../utils/export_global.js";
 
 import css from "./cms_form.css?raw";
 injectCss(css);
@@ -8,9 +9,7 @@ injectCss(css);
 var Webflow = window.Webflow || [];
 Webflow.push(async () => {
   if (document.querySelector("[c-chapeau-form]")) {
-    await import("../../dependencies/awf.js").then((module) => {
-      Object.assign(globalThis, module);
-    });
+    await import("../../dependencies/awf.js").then(exportGlobal);
 
     createChapeauFormular();
   }

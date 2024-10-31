@@ -1,6 +1,7 @@
 import { AsyncForm } from "./async_form.js";
 import { onReady } from "../../utils/on_ready.js";
 import injectCss from "../../utils/inject_css.js";
+import { exportGlobal } from "../../utils/export_global.js";
 
 import css from "./fileupload.css?raw";
 injectCss(css);
@@ -29,9 +30,7 @@ export class FileUpload {
     asyncForm.onInput = async (input, value) =>
       await this.inputHandler(input, value);
 
-    import("../../dependencies/filepond.js").then((module) => {
-      Object.assign(globalThis, module);
-    });
+    import("../../dependencies/filepond.js").then(exportGlobal);
   }
 
   onload() {

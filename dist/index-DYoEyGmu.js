@@ -648,6 +648,7 @@ function styleInject(css2, ref) {
 function injectCss(css2) {
   styleInject(css2, { insertAt: "top" });
 }
+const exportGlobal = (module) => Object.assign(globalThis, module);
 const css$1 = ".filepond--root,\n.filepond--root *,\n.filepond--drop-label label {\n	cursor: pointer;\n}\n\n.filepond--root {\n	font-size: 1em;\n}\n\n.filepond--drop-label {\n	justify-content: start;\n	padding-left: 1em;\n}\n\n.filepond--panel-root {\n	background-color: transparent;\n	border-radius: 0;\n	border: 1px solid #ededed;\n}\n\n.filepond--list {\n	left: 1em;\n	right: 1em;\n}\n\n.filepond--drop-label.filepond--drop-label label {\n	padding: 0;\n}\n\n.filepond--item {\n	margin: 0;\n	margin-bottom: 0.25em;\n}\n";
 injectCss(css$1);
 class FileUpload {
@@ -668,9 +669,7 @@ class FileUpload {
     asyncForm.onBeforeSubmit = () => this.beforeSubmit();
     asyncForm.onPayload = (payload) => this.onPayload(payload);
     asyncForm.onInput = async (input, value) => await this.inputHandler(input, value);
-    import("./filepond-BygWwAQT.js").then((module) => {
-      Object.assign(globalThis, module);
-    });
+    import("./filepond-B4JsRGV-.js").then(exportGlobal);
   }
   onload() {
     FilePond.registerPlugin(FilePondPluginFileValidateType);
@@ -894,9 +893,7 @@ injectCss(css);
 var Webflow = window.Webflow || [];
 Webflow.push(async () => {
   if (document.querySelector("[c-chapeau-form]")) {
-    await import("./awf-D5m8_nM8.js").then((module) => {
-      Object.assign(globalThis, module);
-    });
+    await import("./awf-D5m8_nM8.js").then(exportGlobal);
     createChapeauFormular();
   }
 });
@@ -1108,4 +1105,4 @@ export {
   Chapeau as C,
   injectCss as i
 };
-//# sourceMappingURL=index-DvozilLF.js.map
+//# sourceMappingURL=index-DYoEyGmu.js.map
