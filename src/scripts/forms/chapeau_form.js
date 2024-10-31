@@ -1,11 +1,19 @@
-import * as AWF from "advanced-webflow-forms/dist/awf.js";
-import { AsyncForm, FileUpload } from "chapeaujs";
-import "chapeaujs/dist/style.css";
-import "../styles/chapeau_formular.css";
+import { AsyncForm } from "./async_form.js";
+import { FileUpload } from "./fileupload.js";
+import injectCss from "../../utils/inject_css.js";
+
+import css from "./chapeau_formular.css?raw";
+injectCss(css);
 
 var Webflow = window.Webflow || [];
-Webflow.push(() => {
-  createChapeauFormular();
+Webflow.push(async () => {
+  if (document.querySelector("[c-chapeau-form]")) {
+    await import("./awf.js").then((module) => {
+      Object.assign(globalThis, module);
+    });
+
+    createChapeauFormular();
+  }
 });
 
 function createChapeauFormular() {

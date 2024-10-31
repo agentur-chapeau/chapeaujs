@@ -648,8 +648,8 @@ function styleInject(css2, ref) {
 function injectCss(css2) {
   styleInject(css2, { insertAt: "top" });
 }
-const css = ".filepond--root,\n.filepond--root *,\n.filepond--drop-label label {\n	cursor: pointer;\n}\n\n.filepond--root {\n	font-size: 1em;\n}\n\n.filepond--drop-label {\n	justify-content: start;\n	padding-left: 1em;\n}\n\n.filepond--panel-root {\n	background-color: transparent;\n	border-radius: 0;\n	border: 1px solid #ededed;\n}\n\n.filepond--list {\n	left: 1em;\n	right: 1em;\n}\n\n.filepond--drop-label.filepond--drop-label label {\n	padding: 0;\n}\n\n.filepond--item {\n	margin: 0;\n	margin-bottom: 0.25em;\n}\n";
-injectCss(css);
+const css$1 = ".filepond--root,\n.filepond--root *,\n.filepond--drop-label label {\n	cursor: pointer;\n}\n\n.filepond--root {\n	font-size: 1em;\n}\n\n.filepond--drop-label {\n	justify-content: start;\n	padding-left: 1em;\n}\n\n.filepond--panel-root {\n	background-color: transparent;\n	border-radius: 0;\n	border: 1px solid #ededed;\n}\n\n.filepond--list {\n	left: 1em;\n	right: 1em;\n}\n\n.filepond--drop-label.filepond--drop-label label {\n	padding: 0;\n}\n\n.filepond--item {\n	margin: 0;\n	margin-bottom: 0.25em;\n}\n";
+injectCss(css$1);
 class FileUpload {
   constructor(el) {
     if (el.dataset.refFileUpload) {
@@ -668,7 +668,7 @@ class FileUpload {
     asyncForm.onBeforeSubmit = () => this.beforeSubmit();
     asyncForm.onPayload = (payload) => this.onPayload(payload);
     asyncForm.onInput = async (input, value) => await this.inputHandler(input, value);
-    import("./filepond-DCd_vSoB.js").then((module) => {
+    import("./filepond-DjXgz4v1.js").then((module) => {
       Object.assign(globalThis, module);
     });
   }
@@ -792,6 +792,303 @@ const defaultLabels = {
     "application/vnd.openxmlformats-officedocument.wordprocessingml.document": ".docx"
   }
 };
+const css = "[c-cloak] {\n	display: none;\n}\n";
+injectCss(css);
+var Webflow = window.Webflow || [];
+Webflow.push(async () => {
+  if (document.querySelector("[c-chapeau-form]")) {
+    await import("./awf-D5m8_nM8.js").then((module) => {
+      Object.assign(globalThis, module);
+    });
+    createChapeauFormular();
+  }
+});
+function createChapeauFormular() {
+  const $main = document.querySelector('[c-chapeau-form="main"]');
+  const $nav = $main.querySelector('[c-chapeau-form="nav"]');
+  const $totalSteps = $main.querySelector('[c-chapeau-form="total-steps"]');
+  const $progress = $main.querySelector('[c-chapeau-form="progress"]');
+  const $slider = $main.querySelector('[c-chapeau-form="slider"]');
+  const $slideList = $main.querySelector('[c-chapeau-form="slides"]');
+  const $notQualifiedMsg = $main.querySelector(
+    '[c-chapeau-form="not-qualified-message"]'
+  );
+  const $buttons = $main.querySelector('[c-chapeau-form="buttons"]');
+  const formSelector = '[c-chapeau-form="form"]';
+  const nextSelector = '[c-chapeau-form="next"]';
+  const backSelector = '[c-chapeau-form="back"]';
+  const currentStepSelector = '[c-chapeau-form="current-step"]';
+  moveCmsSlidesToSlider($slider, $slideList);
+  const msf = new AWF.MSF({
+    hiddeButtonsOnSubmit: false,
+    // Buttons will be manually hidden
+    scrollTopOnStepChange: false,
+    formSelector,
+    nextSelector,
+    backSelector,
+    currentStepSelector
+  });
+  useDisabledClass(msf);
+  useProgressBar(msf, $progress);
+  useBrowserValidation(msf);
+  useNotQualified(msf, $notQualifiedMsg, $nav, $buttons);
+  useConversion(msf);
+  useAyncForm(msf, $main);
+  useFileUpload(msf, $main);
+  const totalSteps = msf.view.steps.length;
+  $totalSteps.textContent = totalSteps;
+  window.msf = msf;
+  $main.removeAttribute("c-cloak");
+  msf.view.setMaskHeight(0);
+}
+function moveCmsSlidesToSlider($slider, $slideList) {
+  var _a;
+  const sliderMask = $slider.querySelector(":scope > .w-slider-mask");
+  const slides = Array.from(
+    $slideList.querySelectorAll(":scope > .w-dyn-items > .w-dyn-item")
+  );
+  Array.from(sliderMask.querySelectorAll(".w-slide")).forEach(
+    (el) => el.remove()
+  );
+  slides.forEach((slide) => {
+    slide.classList.add("w-slide");
+    sliderMask.appendChild(slide);
+  });
+  $slideList.remove();
+  Webflow.destroy();
+  Webflow.ready();
+  (_a = Webflow.require("ix2")) == null ? void 0 : _a.init();
+  Webflow.require("slider").redraw();
+  Webflow.require("slider").ready();
+}
+function useProgressBar({ view, controller }, $progress) {
+  view.next.addEventListener("click", updateProgressBar);
+  view.back.addEventListener("click", updateProgressBar);
+  updateProgressBar();
+  function updateProgressBar() {
+    const currentStep = controller.currentStep + 1;
+    const totalSteps = view.steps.length;
+    const progress = Math.min(currentStep / totalSteps * 100, 100);
+    $progress.style.width = `${progress}%`;
+  }
+}
+function useNotQualified({ view, controller }, notQualifiedMsg, nav, buttons) {
+  view.form.addEventListener("change", checkQualified);
+  function checkQualified() {
+    var _a;
+    const inputs = view.getInputs(controller.currentStep);
+    const notQualified = inputs.some((input) => {
+      if (input.checked) {
+        return input.parentElement.querySelector(
+          '[c-chapeau-form="not-qualified"]'
+        ) != null;
+      } else {
+        return false;
+      }
+    });
+    const currentSlide = view.steps[controller.currentStep];
+    const isNextSlideNotQualifiedMessage = (_a = currentSlide.nextSibling) == null ? void 0 : _a.matches(
+      '[c-chapeau-form="not-qualified-message"]'
+    );
+    if (notQualified) {
+      if (!isNextSlideNotQualifiedMessage) {
+        currentSlide.insertAdjacentHTML("afterend", notQualifiedMsg.outerHTML);
+        currentSlide.nextElementSibling.querySelector('[c-chapeau-form="not-qualified-back"]').addEventListener("click", () => view.back.click());
+      }
+    } else {
+      if (isNextSlideNotQualifiedMessage) {
+        currentSlide.nextSibling.remove();
+      }
+    }
+    currentSlide.dataset.notQualified = notQualified;
+    Webflow.require("slider").redraw();
+    Webflow.require("slider").ready();
+  }
+  const originalSubmitForm = view.submitForm.bind(view);
+  view.submitForm = () => {
+    const lastSlide = view.steps[view.steps.length - 1];
+    if (lastSlide.dataset.notQualified === "true") {
+      view.goNext();
+      hideElements();
+    } else {
+      originalSubmitForm();
+    }
+  };
+  view.next.addEventListener("click", () => {
+    const lastSlide = view.steps[controller.currentStep - 1];
+    if ((lastSlide == null ? void 0 : lastSlide.dataset.notQualified) === "true") {
+      hideElements();
+    }
+  });
+  view.back.addEventListener("click", () => {
+    showElements();
+  });
+  function hideElements() {
+    view.hideElement(nav);
+    view.hideElement(buttons);
+  }
+  function showElements() {
+    view.showElement(nav);
+    view.showElement(buttons);
+  }
+}
+function useDisabledClass({ view }) {
+  view.enableElement(view.back);
+  view.disableElement = (el) => {
+    if (!el) return;
+    el.classList.add("disabled");
+  };
+  view.enableElement = (el) => {
+    if (!el) return;
+    el.classList.remove("disabled");
+  };
+  view.disableElement(view.back);
+}
+function useBrowserValidation(msf) {
+  msf.view;
+  const controller = msf.controller;
+  const originalCheckRequiredInputs = controller.checkRequiredInputs.bind(controller);
+  function newCheckRequiredInputs() {
+    this.inputsCurrentlyValid = true;
+    const inputs = this.view.getInputs(this.currentStep);
+    for (const input of inputs) {
+      const isValid = input.reportValidity();
+      if (!isValid) {
+        this.inputsCurrentlyValid = false;
+        return false;
+      }
+    }
+    return originalCheckRequiredInputs();
+  }
+  controller.checkRequiredInputs = newCheckRequiredInputs.bind(controller);
+}
+function useAyncForm({ view, controller }, $main) {
+  const $back = view.back;
+  const $next = view.next;
+  const asyncForm = new AsyncForm($main);
+  asyncForm.onState = (state) => {
+    if (state === "success") {
+      view.hideElement($back);
+      view.hideElement($next);
+    }
+  };
+  controller.observeSubmitText();
+  controller.handleSubmit = () => {
+    controller.currentStep = Math.min(
+      controller.currentStep,
+      view.steps.length - 1
+    );
+  };
+}
+function useFileUpload(msf, $main) {
+  new FileUpload($main);
+  const view = msf.view;
+  const controller = msf.controller;
+  view.form.addEventListener("FilePond:updatefiles", () => {
+    setTimeout(() => view.setMaskHeight(controller.currentStep), 100);
+  });
+}
+function useConversion({ view, controller }) {
+  view.form.addEventListener("change", checkValidity);
+  view.next.addEventListener("click", checkValidity);
+  view.back.addEventListener("click", checkValidity);
+  checkValidity();
+  function checkValidity() {
+    const inputs = view.getInputs(controller.currentStep);
+    const inputsNotValid = inputs.some((input) => !input.checkValidity());
+    const currentSlide = view.steps[controller.currentStep];
+    const currentSlideNotQualified = currentSlide.dataset.notQualified == "true";
+    view.next.dataset.trackDisabled = inputsNotValid || currentSlideNotQualified;
+  }
+}
+document.addEventListener("DOMContentLoaded", () => {
+  if (window.location.search) {
+    const params = new URLSearchParams(window.location.search);
+    const gclid = params.get("gclid");
+    if (gclid) {
+      window.localStorage.setItem("gclid", gclid);
+    }
+    const fbclid = params.get("fbclid");
+    if (fbclid) {
+      const fbc = `fb.1.${Date.now()}.${fbclid}`;
+      window.localStorage.setItem("fbc", fbc);
+    }
+    const ttclid = params.get("ttclid");
+    if (ttclid) {
+      window.localStorage.setItem("ttclid", ttclid);
+    }
+  }
+  const forms = Array.from(document.querySelectorAll("[c-conversion] > form"));
+  forms.forEach((form) => {
+    const inputs = ["gclid", "fbc", "fbp", "user-agent", "ttclid", "url"].reduce((obj, name) => {
+      const input = document.createElement("input");
+      input.type = "hidden";
+      input.name = name;
+      form.appendChild(input);
+      return {
+        ...obj,
+        [name]: input
+      };
+    }, {});
+    form.addEventListener("submit", () => {
+      const conversionIds = getConversionIDs();
+      inputs.gclid.value = conversionIds.gclid;
+      inputs.fbc.value = conversionIds.fbc;
+      inputs.fbp.value = conversionIds.fbp;
+      inputs["user-agent"].value = conversionIds.useragent;
+      inputs.ttclid.value = conversionIds.ttclid;
+      inputs.url.value = conversionIds.url;
+      if (window.fbq !== void 0) {
+        fbq("track", "SubmitApplication", {}, { eventID: conversionIds.fbp });
+      }
+    });
+  });
+  const trackElements = Array.from(document.querySelectorAll("[data-fb-track]"));
+  trackElements.forEach((el) => {
+    el.addEventListener("click", () => {
+      const isDisabled = el.dataset.trackDisabled === "true";
+      if (isDisabled) return;
+      const event = el.dataset.fbTrack;
+      const conversionIds = getConversionIDs();
+      const url = el.dataset.trackUrl;
+      if (window.fbq !== void 0) {
+        fbq("track", event, {}, { eventID: conversionIds.fbp });
+      }
+      fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          event,
+          ...conversionIds
+        })
+      });
+    });
+  });
+  function getConversionIDs() {
+    const gclid = window.localStorage.getItem("gclid");
+    const fbc = window.localStorage.getItem("fbc");
+    const fbp = getCookie("_fbp");
+    const useragent = navigator.userAgent;
+    const ttclid = window.localStorage.getItem("ttclid");
+    const url = window.location.href;
+    return {
+      gclid,
+      fbc,
+      fbp,
+      useragent,
+      ttclid,
+      url
+    };
+  }
+  function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(";").shift();
+    else return null;
+  }
+});
 const Chapeau = {
   AsyncForm,
   FileUpload
@@ -801,4 +1098,4 @@ export {
   Chapeau as C,
   injectCss as i
 };
-//# sourceMappingURL=index-DjIeAQIV.js.map
+//# sourceMappingURL=index-yV6E-2qJ.js.map
