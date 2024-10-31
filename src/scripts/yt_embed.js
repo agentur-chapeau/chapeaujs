@@ -24,6 +24,7 @@ function getIdFromUrl(urlString) {
 
   return videoId;
 }
+
 /** @param {HTMLElement} $el */
 function createVideo($el) {
   $el.classList.add("c-video");
