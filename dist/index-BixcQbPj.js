@@ -670,7 +670,7 @@ class FileUpload {
     asyncForm.onBeforeSubmit = () => this.beforeSubmit();
     asyncForm.onPayload = (payload) => this.onPayload(payload);
     asyncForm.onInput = async (input, value) => await this.inputHandler(input, value);
-    import("./filepond-B0K1-56P.js").then(exportGlobal);
+    import("./filepond-DdLFDguy.js").then(exportGlobal);
   }
   onload() {
     FilePond.registerPlugin(FilePondPluginFileValidateType);
@@ -894,7 +894,7 @@ injectCss(css);
 var Webflow = window.Webflow || [];
 Webflow.push(async () => {
   if (document.querySelector("[c-chapeau-form]")) {
-    await import("./awf-D5m8_nM8.js").then(exportGlobal);
+    await import("./awf-DiRl5HF2.js").then(exportGlobal);
     createChapeauFormular();
   }
 });
@@ -1096,6 +1096,19 @@ function useConversion({ view, controller }) {
     view.next.dataset.trackDisabled = inputsNotValid || currentSlideNotQualified;
   }
 }
+function getDefaultExportFromCjs(x) {
+  return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, "default") ? x["default"] : x;
+}
+var jquery = $;
+const $$1 = /* @__PURE__ */ getDefaultExportFromCjs(jquery);
+$$1(".field__input").on("input", function() {
+  var $field = $$1(this).closest(".field");
+  if (this.value) {
+    $field.addClass("field--not-empty");
+  } else {
+    $field.removeClass("field--not-empty");
+  }
+});
 const Chapeau = exportChapeau({
   AsyncForm,
   FileUpload,
@@ -1103,6 +1116,7 @@ const Chapeau = exportChapeau({
 });
 export {
   Chapeau as C,
+  getDefaultExportFromCjs as g,
   injectCss as i
 };
-//# sourceMappingURL=index-CWcLrCW9.js.map
+//# sourceMappingURL=index-BixcQbPj.js.map

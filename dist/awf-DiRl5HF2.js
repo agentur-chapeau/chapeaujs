@@ -1,3 +1,4 @@
+import { g as getDefaultExportFromCjs } from "./index-BixcQbPj.js";
 function _mergeNamespaces(n, m) {
   for (var i = 0; i < m.length; i++) {
     const e = m[i];
@@ -16,9 +17,6 @@ function _mergeNamespaces(n, m) {
     }
   }
   return Object.freeze(Object.defineProperty(n, Symbol.toStringTag, { value: "Module" }));
-}
-function getDefaultExportFromCjs(x) {
-  return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, "default") ? x["default"] : x;
 }
 var awf$2 = { exports: {} };
 (function(module, exports) {
@@ -777,4 +775,4 @@ const awf$1 = /* @__PURE__ */ _mergeNamespaces({
 export {
   awf$1 as AWF
 };
-//# sourceMappingURL=awf-D5m8_nM8.js.map
+//# sourceMappingURL=awf-DiRl5HF2.js.map

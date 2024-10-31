@@ -2,6 +2,7 @@ import * as fs from "fs/promises";
 import { existsSync } from "fs";
 import { defineConfig } from "vite";
 import path from "path";
+import createExternal from "vite-plugin-external";
 
 export default defineConfig(async () => {
   const entrypointPath = path.join(__dirname, "src/scripts");
@@ -17,6 +18,14 @@ export default defineConfig(async () => {
         fileName: (_, entry) => `${entry}.js`,
       },
     },
+    plugins: [
+      createExternal({
+        interop: "auto",
+        externals: {
+          jquery: "$",
+        },
+      }),
+    ],
   };
 });
 
