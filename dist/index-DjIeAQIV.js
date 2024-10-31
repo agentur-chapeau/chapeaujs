@@ -645,8 +645,11 @@ function styleInject(css2, ref) {
     style.appendChild(document.createTextNode(css2));
   }
 }
+function injectCss(css2) {
+  styleInject(css2, { insertAt: "top" });
+}
 const css = ".filepond--root,\n.filepond--root *,\n.filepond--drop-label label {\n	cursor: pointer;\n}\n\n.filepond--root {\n	font-size: 1em;\n}\n\n.filepond--drop-label {\n	justify-content: start;\n	padding-left: 1em;\n}\n\n.filepond--panel-root {\n	background-color: transparent;\n	border-radius: 0;\n	border: 1px solid #ededed;\n}\n\n.filepond--list {\n	left: 1em;\n	right: 1em;\n}\n\n.filepond--drop-label.filepond--drop-label label {\n	padding: 0;\n}\n\n.filepond--item {\n	margin: 0;\n	margin-bottom: 0.25em;\n}\n";
-styleInject(css, { insertAt: "top" });
+injectCss(css);
 class FileUpload {
   constructor(el) {
     if (el.dataset.refFileUpload) {
@@ -665,7 +668,7 @@ class FileUpload {
     asyncForm.onBeforeSubmit = () => this.beforeSubmit();
     asyncForm.onPayload = (payload) => this.onPayload(payload);
     asyncForm.onInput = async (input, value) => await this.inputHandler(input, value);
-    import("./filepond-CRI6JjYE.js").then((module) => {
+    import("./filepond-DCd_vSoB.js").then((module) => {
       Object.assign(globalThis, module);
     });
   }
@@ -796,6 +799,6 @@ const Chapeau = {
 window.Chapeau = Chapeau;
 export {
   Chapeau as C,
-  styleInject as s
+  injectCss as i
 };
-//# sourceMappingURL=index-CuTrMHo4.js.map
+//# sourceMappingURL=index-DjIeAQIV.js.map

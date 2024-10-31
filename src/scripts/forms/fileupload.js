@@ -1,16 +1,9 @@
-import styleInject from "style-inject";
 import { AsyncForm } from "./async_form.js";
 import { onReady } from "../../utils/on_ready.js";
+import injectCss from "../../utils/inject_css.js";
 
-// import "../styles/fileupload.css";
-import css from "../../../styles/fileupload.css?raw";
-styleInject(css, { insertAt: "top" });
-
-// import("filepond/dist/filepond.min.css");
-// import("../styles/fileupload.css");
-
-// import css from "bundle-text:../styles/fileupload.css";
-// styleInject(css, { insertAt: "top" });
+import css from "./fileupload.css?raw";
+injectCss(css);
 
 export class FileUpload {
   constructor(el) {
