@@ -88,29 +88,29 @@ onReady(() => {
       });
     });
   });
-
-  function getConversionIDs() {
-    const gclid = window.localStorage.getItem("gclid");
-    const fbc = window.localStorage.getItem("fbc");
-    const fbp = getCookie("_fbp");
-    const useragent = navigator.userAgent;
-    const ttclid = window.localStorage.getItem("ttclid");
-    const url = window.location.href;
-
-    return {
-      gclid,
-      fbc,
-      fbp,
-      useragent,
-      ttclid,
-      url,
-    };
-  }
-
-  function getCookie(name) {
-    const value = `; ${document.cookie}`;
-    const parts = value.split(`; ${name}=`);
-    if (parts.length === 2) return parts.pop().split(";").shift();
-    else return null;
-  }
 });
+
+export function getConversionIDs() {
+  const gclid = window.localStorage.getItem("gclid");
+  const fbc = window.localStorage.getItem("fbc");
+  const fbp = getCookie("_fbp");
+  const useragent = navigator.userAgent;
+  const ttclid = window.localStorage.getItem("ttclid");
+  const url = window.location.href;
+
+  return {
+    gclid,
+    fbc,
+    fbp,
+    useragent,
+    ttclid,
+    url,
+  };
+}
+
+function getCookie(name) {
+  const value = `; ${document.cookie}`;
+  const parts = value.split(`; ${name}=`);
+  if (parts.length === 2) return parts.pop().split(";").shift();
+  else return null;
+}
