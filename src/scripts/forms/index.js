@@ -1,7 +1,7 @@
 import { AsyncForm } from "./async_form.js";
 import { FileUpload } from "./fileupload.js";
 import { getConversionIDs } from "./conversion.js";
-import "./chapeau_form.js";
+import "./cms_form.js";
 
 const Chapeau = {
   AsyncForm,

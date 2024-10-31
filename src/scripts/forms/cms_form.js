@@ -2,7 +2,7 @@ import { AsyncForm } from "./async_form.js";
 import { FileUpload } from "./fileupload.js";
 import injectCss from "../../utils/inject_css.js";
 
-import css from "./chapeau_formular.css?raw";
+import css from "./cms_form.css?raw";
 injectCss(css);
 
 var Webflow = window.Webflow || [];
