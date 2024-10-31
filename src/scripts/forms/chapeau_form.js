@@ -8,7 +8,7 @@ injectCss(css);
 var Webflow = window.Webflow || [];
 Webflow.push(async () => {
   if (document.querySelector("[c-chapeau-form]")) {
-    await import("./awf.js").then((module) => {
+    await import("../../dependencies/awf.js").then((module) => {
       Object.assign(globalThis, module);
     });
 

@@ -29,7 +29,7 @@ export class FileUpload {
     asyncForm.onInput = async (input, value) =>
       await this.inputHandler(input, value);
 
-    import("./filepond.js").then((module) => {
+    import("../../dependencies/filepond.js").then((module) => {
       Object.assign(globalThis, module);
     });
   }
