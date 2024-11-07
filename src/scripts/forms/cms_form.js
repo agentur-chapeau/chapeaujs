@@ -4,6 +4,7 @@ import injectCss from "../../utils/inject_css.js";
 import { exportGlobal } from "../../utils/export_global.js";
 
 import css from "./cms_form.css?raw";
+import { exportChapeau } from "../../utils/export_chapeau.js";
 injectCss(css);
 
 var Webflow = window.Webflow || [];
@@ -60,7 +61,7 @@ function createChapeauFormular() {
   $totalSteps.textContent = totalSteps;
 
   // Make msf available in console
-  window.msf = msf;
+  exportChapeau({ msf });
 
   $main.removeAttribute("c-cloak");
 

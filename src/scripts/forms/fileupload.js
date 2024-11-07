@@ -129,8 +129,6 @@ export class FileUpload {
 
 FileUpload.refs = {};
 
-window.FileUpload = FileUpload;
-
 onReady(() => {
   Array.from(document.querySelectorAll("[c-file-upload]")).forEach(
     (el) => new FileUpload(el),

@@ -616,7 +616,6 @@ class AsyncForm {
   }
 }
 AsyncForm.refs = {};
-window.AsyncForm = AsyncForm;
 onReady(() => {
   Array.from(document.querySelectorAll("[c-async-form]")).forEach(
     (el) => new AsyncForm(el)
@@ -670,7 +669,7 @@ class FileUpload {
     asyncForm.onBeforeSubmit = () => this.beforeSubmit();
     asyncForm.onPayload = (payload) => this.onPayload(payload);
     asyncForm.onInput = async (input, value) => await this.inputHandler(input, value);
-    import("./filepond-DdLFDguy.js").then(exportGlobal);
+    import("./filepond-BbI3uOhn.js").then(exportGlobal);
   }
   onload() {
     FilePond.registerPlugin(FilePondPluginFileValidateType);
@@ -748,7 +747,6 @@ class FileUpload {
   }
 }
 FileUpload.refs = {};
-window.FileUpload = FileUpload;
 onReady(() => {
   Array.from(document.querySelectorAll("[c-file-upload]")).forEach(
     (el) => new FileUpload(el)
@@ -894,7 +892,7 @@ injectCss(css);
 var Webflow = window.Webflow || [];
 Webflow.push(async () => {
   if (document.querySelector("[c-chapeau-form]")) {
-    await import("./awf-DiRl5HF2.js").then(exportGlobal);
+    await import("./awf-CGwcVeVv.js").then(exportGlobal);
     createChapeauFormular();
   }
 });
@@ -932,7 +930,7 @@ function createChapeauFormular() {
   useFileUpload(msf, $main);
   const totalSteps = msf.view.steps.length;
   $totalSteps.textContent = totalSteps;
-  window.msf = msf;
+  exportChapeau({ msf });
   $main.removeAttribute("c-cloak");
   msf.view.setMaskHeight(0);
 }
@@ -1119,4 +1117,4 @@ export {
   getDefaultExportFromCjs as g,
   injectCss as i
 };
-//# sourceMappingURL=index-BixcQbPj.js.map
+//# sourceMappingURL=index-CO_Aj-Yj.js.map
