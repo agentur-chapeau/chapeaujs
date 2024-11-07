@@ -25,6 +25,7 @@
     "filepond-plugin-file-validate-type": "^1.2.9",
     "jquery": "3.5.1",
     "lodash-es": "^4.17.21",
-    "style-inject": "^0.3.0"
+    "style-inject": "^0.3.0",
+    "swiper": "^11.1.14"
   }
 }
