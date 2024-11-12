@@ -1,5 +1,5 @@
 import "./export_chapeau-CsPk7c8y.js";
-import { C } from "./index-Cr-xfubT.js";
+import { C } from "./index-CZb_ytt5.js";
 export {
   C as default
 };

@@ -1,11 +1,6 @@
 import { e as exportChapeau } from "./export_chapeau-CsPk7c8y.js";
-function onReady(callback) {
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", callback);
-  } else {
-    callback();
-  }
-}
+import { o as onReady, e as exportGlobal } from "./export_global-CQx4bBxY.js";
+import { i as injectCss } from "./inject_css-CoK3ed1T.js";
 var freeGlobal = typeof global == "object" && global && global.Object === Object && global;
 var freeSelf = typeof self == "object" && self && self.Object === Object && self;
 var root = freeGlobal || freeSelf || Function("return this")();
@@ -621,34 +616,6 @@ onReady(() => {
     (el) => new AsyncForm(el)
   );
 });
-function styleInject(css2, ref) {
-  if (ref === void 0) ref = {};
-  var insertAt = ref.insertAt;
-  if (!css2 || typeof document === "undefined") {
-    return;
-  }
-  var head = document.head || document.getElementsByTagName("head")[0];
-  var style = document.createElement("style");
-  style.type = "text/css";
-  if (insertAt === "top") {
-    if (head.firstChild) {
-      head.insertBefore(style, head.firstChild);
-    } else {
-      head.appendChild(style);
-    }
-  } else {
-    head.appendChild(style);
-  }
-  if (style.styleSheet) {
-    style.styleSheet.cssText = css2;
-  } else {
-    style.appendChild(document.createTextNode(css2));
-  }
-}
-function injectCss(css2) {
-  styleInject(css2, { insertAt: "top" });
-}
-const exportGlobal = (module) => Object.assign(globalThis, module);
 const css$1 = ".filepond--root,\n.filepond--root *,\n.filepond--drop-label label {\n	cursor: pointer;\n}\n\n.filepond--root {\n	font-size: 1em;\n}\n\n.filepond--drop-label {\n	justify-content: start;\n	padding-left: 1em;\n}\n\n.filepond--panel-root {\n	background-color: transparent;\n	border-radius: 0;\n	border: 1px solid #ededed;\n}\n\n.filepond--list {\n	left: 1em;\n	right: 1em;\n}\n\n.filepond--drop-label.filepond--drop-label label {\n	padding: 0;\n}\n\n.filepond--item {\n	margin: 0;\n	margin-bottom: 0.25em;\n}\n";
 injectCss(css$1);
 class FileUpload {
@@ -669,7 +636,7 @@ class FileUpload {
     asyncForm.onBeforeSubmit = () => this.beforeSubmit();
     asyncForm.onPayload = (payload) => this.onPayload(payload);
     asyncForm.onInput = async (input, value) => await this.inputHandler(input, value);
-    import("./filepond-CQakUZ5h.js").then(exportGlobal);
+    import("./filepond-BCZKc-Y5.js").then(exportGlobal);
   }
   onload() {
     FilePond.registerPlugin(FilePondPluginFileValidateType);
@@ -892,7 +859,7 @@ injectCss(css);
 var Webflow = window.Webflow || [];
 Webflow.push(async () => {
   if (document.querySelector("[c-chapeau-form]")) {
-    await import("./awf-Ct9mAC3f.js").then(exportGlobal);
+    await import("./awf-Ba1b_mQU.js").then(exportGlobal);
     createChapeauFormular();
   }
 });
@@ -1114,7 +1081,6 @@ const Chapeau = exportChapeau({
 });
 export {
   Chapeau as C,
-  getDefaultExportFromCjs as g,
-  injectCss as i
+  getDefaultExportFromCjs as g
 };
-//# sourceMappingURL=index-Cr-xfubT.js.map
+//# sourceMappingURL=index-CZb_ytt5.js.map
